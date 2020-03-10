@@ -16,7 +16,7 @@ public class GestioneDigimon {
 		Digidex digidex = new Digidex();
 
 		try {
-			salvataggioFile(digidex);
+			
 			digidex = caricamentoFile();
 		
 
@@ -37,6 +37,7 @@ public class GestioneDigimon {
 				break;
 			}
 			default: {
+				salvataggioFile(digidex);
 				scanner.close();
 				System.exit(0);
 			}
