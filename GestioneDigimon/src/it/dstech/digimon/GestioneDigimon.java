@@ -11,15 +11,18 @@ import java.util.Scanner;
 
 public class GestioneDigimon {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		Digidex digidex = new Digidex();
 
 		try {
-			
-			digidex = caricamentoFile();
-		
 
+			digidex = caricamentoFile();
+
+		} catch (IOException | ClassNotFoundException e) {
+
+			e.printStackTrace();
+		}
 		while (true) {
 			menu();
 			System.out.println("cosa vuoi fare?");
@@ -43,9 +46,6 @@ public class GestioneDigimon {
 			}
 			}
 
-		}} catch (IOException | ClassNotFoundException e) {
-
-			e.printStackTrace();
 		}
 	}
 
@@ -83,6 +83,7 @@ public class GestioneDigimon {
 		ObjectInputStream stream = new ObjectInputStream(in);
 		Digidex digidex = (Digidex) stream.readObject();
 		return digidex;
+
 	}
 
 	private static void salvataggioFile(Digidex digidex) throws IOException {

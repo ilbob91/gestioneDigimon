@@ -58,15 +58,13 @@ public class Digimon implements Comparable<Digimon>, Serializable {
 		this.evo = evo;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + atk;
-		result = prime * result + def;
-		result = prime * result + ((evo == null) ? 0 : evo.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + res;
 		return result;
 	}
 
@@ -79,18 +77,10 @@ public class Digimon implements Comparable<Digimon>, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Digimon other = (Digimon) obj;
-		if (atk != other.atk)
-			return false;
-		if (def != other.def)
-			return false;
-		if (evo != other.evo)
-			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
-			return false;
-		if (res != other.res)
 			return false;
 		return true;
 	}
@@ -107,6 +97,20 @@ public class Digimon implements Comparable<Digimon>, Serializable {
 		if (this.getAtk() > o.getAtk())
 			return -1;
 		return 0;
+	}
+	public void digiEvolvi() {
+		if (this.getEvo() == Evoluzione.BASE) {
+			this.setEvo(Evoluzione.DIGIEVOLUZIONE);
+			
+		}
+		else if (this.getEvo() == Evoluzione.DIGIEVOLUZIONE) {
+			this.setEvo(Evoluzione.MEGA_DIGIEVOLUZIONE);
+			
+		} 
+		else  {
+			this.setEvo(Evoluzione.ULTRA_DIGIEVOLUZIONE);
+			
+		}
 	}
 
 }

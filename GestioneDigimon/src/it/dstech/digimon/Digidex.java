@@ -16,29 +16,16 @@ public class Digidex implements Serializable{
 
 	public boolean aggiungiDigimon(Digimon d) {
 
-		for (int i = 0; i < this.getDigidex().size(); i++) {
-			if (d.getNome().equals(this.getDigidex().get(i).getNome())) {
-				if (d.getEvo() == Evoluzione.BASE) {
-					this.getDigidex().get(i).setEvo(Evoluzione.DIGIEVOLUZIONE);
-					return true;
-				}
-				if (d.getEvo() == Evoluzione.DIGIEVOLUZIONE) {
-					this.getDigidex().get(i).setEvo(Evoluzione.MEGA_DIGIEVOLUZIONE);
-					return true;
-				} 
-				if (d.getEvo() == Evoluzione.MEGA_DIGIEVOLUZIONE) {
-					this.getDigidex().get(i).setEvo(Evoluzione.ULTRA_DIGIEVOLUZIONE);
-					return true;
-				} else {
-					return false;
-					
-				}
-			} 
-				
-			} this.getDigidex().add(d);
-				return true;
+		if (!this.getDigidex().contains(d)) {
+			this.getDigidex().add(d);
+			return true;
 		}
-		
+		else {
+			this.getDigidex().get(this.getDigidex().indexOf(d)).digiEvolvi();
+			return true;
+		}
+			
+		}
 	
 	public void stampaDigimon() {
 		System.out.println("ORDINE DI ATTACCO");
